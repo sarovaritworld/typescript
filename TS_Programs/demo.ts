@@ -1,4 +1,6 @@
 
 let a:number=1;
-console.log(a)
+console.log(a);
+
+let string s = sarovar;
 
