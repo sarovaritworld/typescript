@@ -1,46 +1,53 @@
-
 /*
 =========================================================
-PROGRAM 12: REMOVE DUPLICATES FROM AN ARRAY
+PROGRAM 13: FIND THE MISSING NUMBER
 =========================================================
 
-Difficulty: Easy
-Topics: Array, Set, Loops, Searching
+Difficulty: Easy - Medium
+
+Topics:
+- Array
+- reduce()
+- Mathematics
+- Loops
+- Time and Space Complexity
 
 PROBLEM:
-Given an array of numbers, return a new array containing
-only unique elements.
 
-Requirements:
-1. Remove duplicate values.
-2. Preserve the original insertion order.
-3. Do not modify the original array.
+Given an array containing n distinct numbers from the
+range 0 to n, find the one missing number.
+
+Exactly one number is missing.
 
 Example:
-Input:  [1, 2, 2, 3, 4, 4, 5]
-Output: [1, 2, 3, 4, 5]
 
-Input:  [5, 3, 5, 2, 3]
-Output: [5, 3, 2]
+Input:  [3, 0, 1]
+Output: 2
+
+Input:  [0, 1]
+Output: 2
+
+Input:  [9, 6, 4, 2, 3, 5, 7, 0, 1]
+Output: 8
+
+Requirements:
+1. Find the missing number.
+2. Do not modify the original array.
+3. Aim for O(n) time complexity.
+4. Aim for O(1) auxiliary space complexity.
 
 */
 
 
-function removeDuplicate(numArr:number[]):number[]{
-    let res:number[]=[];
-    let seen = new Set<number>();
+function findMissNumber(nums:number[]):number{
+    let n = nums.length;
 
-    for(const num of numArr){
-        if(!seen.has(num)){
-            seen.add(num)
-            res.push(num)
-        }
+    let actualSum:number = nums.reduce((sum, num)=>sum+num, 0)
+    let expectedSum:number = (n*(n+1))/2;
 
-    }    
-
-    return res
+    return expectedSum-actualSum;
 }
 
+let input = [2,3,1,0];
 
-let input = [1, 2, 2, 3, 4, 4, 5];
-console.log(removeDuplicate(input))
+console.log(findMissNumber(input))
